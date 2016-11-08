@@ -1,4 +1,4 @@
-@echo off
+"@echo off
 set filename=%1
 set basename=%~n1
 set extname=%~x1
@@ -12,10 +12,10 @@ GOTO CASE_%var%
     ECHO Unsupported File Type!
     GOTO END_SWITCH
 :CASE_1
-    g++ -std=c++11 -Wall %filename% -o %basename%.exe && %basename%.exe
+    g++ -std=c++11 -Wall %filename% -o "%basename%.exe" && "%basename%.exe"
     GOTO END_SWITCH
 :CASE_2
-    gcc -std=c99 -Wall %filename% -o %basename%.exe && %basename%.exe
+    gcc -std=c99 -Wall %filename% -o "%basename%.exe" && "%basename%.exe"
     GOTO END_SWITCH    
 :CASE_3
     py %filename%
