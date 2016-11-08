@@ -2,20 +2,23 @@
 filename=$1;
 extname=${filename##*.};
 if [ "$extname" = "cpp" ] ; then
-    g++ -std=c++11 -Wall -o `basename $1 .cpp` $1
-    ./`basename $1 .cpp`
+  bname=`basename "$filename" .cpp`
+  g++ -std=c++11 -Wall "$filename" -o "$bname" && ./"$bname"
 elif [ "$extname" = "c" ] ; then
-    gcc -std=c99 -Wall -o `basename $1 .c` $1
-    ./`basename $1 .c`
+  bname=`basename "$filename" .c`
+  gcc -std=c99 -Wall "$filename" -o "$bname" && ./"$bname"
 elif [ "$extname" = "py" ] ; then
-    python3 $1
+  python3 "$filename"
 elif [ "$extname" = "java" ] ; then
-    javac $1
-    java `basename $1 .java`
+  bname=`basename "$filename" .java`
+  javac "$filename" && java "$bname"
+elif [ "$extname" = "html" ] ; then
+  google-chrome "$filename"
+  exit
 elif [ "$extname" = 'cs' ] ; then
-    dotnet run
+  dotnet run
 else
-   echo "unsupported file type!"
+ echo "unsupported file type!"
 fi
 echo -e "\n=========================================="
 read -n1 -p 'Program is complete,press any key to exit.'
