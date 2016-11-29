@@ -1,4 +1,4 @@
-"@echo off
+@echo off
 set filename=%1
 set basename=%~n1
 set extname=%~x1
