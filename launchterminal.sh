@@ -1,1 +1,4 @@
-osascript -e 'tell application "Terminal" to activate do script "cd `dirname '$1'` && clear && bash /Users/vscoderun.sh '$1' && exit"'
+filename=$1;
+filepath=`dirname "$filename"`;
+filename=${filename//' '/'\ '};
+osascript -e 'tell application "Terminal" to activate do script "cd '"$filepath"' && clear && bash /Users/vsruncode.sh '"$filename"' && exit"'
